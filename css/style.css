@@ -1,3 +1,18 @@
 body{
     background-color: rgb(211, 189, 160);
+    text-align: center;
+}
+.jumbotron{
+    text-align: center;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-top: 10px;
+    padding: 5px;
+    align-content: center;
+}
+.input-group{
+    text-align: center;
+    align-content: center;
+    display: inline-block;
+    width: 300px;
 }
