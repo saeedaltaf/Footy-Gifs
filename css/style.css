@@ -16,3 +16,6 @@ body{
     display: inline-block;
     width: 300px;
 }
+.btn{
+    background-color: rgb(186, 146, 224);
+}
