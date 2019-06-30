@@ -7,8 +7,8 @@
 //Display rating of each GIF under the GIF
 //Make AJAX call that takes each topic in array and remakes the buttons on the page
 
-var footyArray = ["Arsenal", "Chelsea", "Barcelona", "Manchester United", "Barcelona", "AC Milan",
-    "Mario Balotelli", "Luis Suarez", "Joey Barton", "Vinnie Jones",];
+var footyArray = ["Arsenal", "Chelsea", "Barcelona", "Manchester United", "AC Milan",
+    "Mario Balotelli", "Luis Suarez", "Joey Barton", "Vinnie Jones"];
 
 function createButtons() {
     //To delete buttons before adding new buttons (avoids repeat buttons):
@@ -22,17 +22,38 @@ function createButtons() {
         createButtons.text(footyArray[i]);
 
         $("#buttons-view").append(createButtons);
+        $("#footy-input").val("");
     }
 }
 
-    //Creates button for user input
-$("#add-footy").on("click", function(event){
+//Creates button for user input
+$("#add-footy").on("click", function (event) {
     //So form won't submit itself, user can click submit or press enter
     event.preventDefault();
-
-    var footyUser = $("#footy-input").val();
+    //push the input to the array:
+    var footyUser = $("#footy-input").val().trim();
     footyArray.push(footyUser);
 
     createButtons();
 })
+
 createButtons();
+
+//AJAX Call to pull GIPHY gifs based on specific button click:
+$(document).on("click", ".footy", function (event) {
+    var searchInput = $(this).attr("data-name");
+    var queryURL = "http://api.giphy.com/v1/gifs/search?api_key=eM3vuQQaXtYtAStZNGXUC7wA1T5Z46FB&q=" + searchInput + "&limit=10";
+
+    // console.log(queryURL);
+    console.log(queryURL);
+
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+    }).then(function (response) {
+        var newFootyDiv = $("<div>");
+        newFootyDiv.append("Rating: " + response.rating);
+        newFootyDiv.append("<img src='" + response.images + "' />");
+        $("#gifHolder").append(newFootyDiv);
+    })
+});
