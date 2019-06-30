@@ -6,6 +6,7 @@
 //They should animate on click (play/pause)
 //Display rating of each GIF under the GIF
 //Make AJAX call that takes each topic in array and remakes the buttons on the page
+$(document).ready(function () {
 
 var footyArray = ["Arsenal", "Chelsea", "Barcelona", "Manchester United", "AC Milan",
     "Mario Balotelli", "Luis Suarez", "Joey Barton", "Vinnie Jones"];
@@ -42,18 +43,19 @@ createButtons();
 //AJAX Call to pull GIPHY gifs based on specific button click:
 $(document).on("click", ".footy", function (event) {
     var searchInput = $(this).attr("data-name");
-    var queryURL = "http://api.giphy.com/v1/gifs/search?api_key=eM3vuQQaXtYtAStZNGXUC7wA1T5Z46FB&q=" + searchInput + "&limit=10";
+    var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + searchInput + "&api_key=eM3vuQQaXtYtAStZNGXUC7wA1T5Z46FB&limit=10";
 
     // console.log(queryURL);
-    console.log(queryURL);
+    // console.log(queryURL);
 
     $.ajax({
         url: queryURL,
         method: "GET"
     }).then(function (response) {
         var newFootyDiv = $("<div>");
-        newFootyDiv.append("Rating: " + response.rating);
+        newFootyDiv.append("Rating: " + response.slug);
         newFootyDiv.append("<img src='" + response.images + "' />");
         $("#gifHolder").append(newFootyDiv);
     })
+})
 });
