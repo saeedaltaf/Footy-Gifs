@@ -12,6 +12,8 @@
     <title>Footy Gifs!</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- jQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!-- CSS RESET -->
     <link rel="stylesheet" href="css/reset.css">
     <!-- BOOTSTRAP -->
@@ -32,13 +34,14 @@
         <h3>Click on any button to enjoy Gifs some footy gifs!</h3>
         <h5>Or create your own by searching and clicking on the button</h5>
         <br>
-        <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Enter football player or team here..."
-                aria-label="Enter football player or team here..." aria-describedby="button-addon2">
-            <div class="input-group-append">
-                <button class="btn btn-outline-secondary" type="button" id="button-addon2 search-btn">Search</button>
-            </div>
-        </div>
+        <div id="buttons-view"></div>
+        <br>
+        <form id="footy-form">
+            <label for="footy-input">Add a player or team!</label>
+            <input type="text" id="footy-input"><br>
+            <!-- Button triggers new footy to be added -->
+            <input id="add-footy" type="submit" value="Submit">
+        </form>
     </div>
 
     <!-- Area for Giphs -->
@@ -54,9 +57,7 @@
         </div>
     </div>
 
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script type="text/javascript" src="app.js"></script>
+    <script src="app.js"></script>
 
 </body>
 
