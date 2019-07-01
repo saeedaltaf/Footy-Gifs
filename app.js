@@ -53,7 +53,7 @@ $(document).ready(function () {
             url: queryURL,
             method: "GET"
         }).then(function (response) {
-            console.log(response);
+            console.log(response.data[0].type);
 
             //storing the array as a variable name:
             var giphy = response.data;
@@ -61,19 +61,11 @@ $(document).ready(function () {
 
             //Loop through the array in queryURL:
             for (var i = 0; i < giphy.length, i++;) {
-                var footyGifs = $("#gifHolder");
-
-                //GIF Rating:
-                var rate = $("<p>").text("Rating: " + giphy[i].rating + "</p>");
-                var footyGifImage = $("<img giphy-state ='animate'>");
-
-                footyGifImage.attr('src', giphy[i].fixed_height_still.url);
-                footyGifImage.attr('data-animate', giphy[i].images.fixed_height.url)
-                footyGifImage.attr('data-still', giphy[i].images.fixed_height_still.url)
-                footyGifImage.attr('class', 'gif img-responsive')
+                var footyGifs = $("#gifRowOne");
 
 
-                footyGifs.append(rate);
+
+                footyGifs.append(response.data[0].type);
                 footyGifs.append(footyGifImage);
 
             }

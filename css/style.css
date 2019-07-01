@@ -33,3 +33,7 @@ button:hover{
 #add-footy:hover{
     background-color: pink;
 }
+#gifHolder{
+    background-color: green;
+    /* margin-top: 500px; */
+}
