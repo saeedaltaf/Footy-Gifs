@@ -1,6 +1,9 @@
 body{
     background-color: rgb(211, 189, 160);
     text-align: center;
+    background-image: url("../Assets/Images/591.png");
+    font-family: 'Bubblegum Sans', cursive;
+    color: white;
 }
 .jumbotron{
     text-align: center;
@@ -9,6 +12,8 @@ body{
     margin-top: 10px;
     padding: 5px;
     align-content: center;
+    background-color: white;
+    color: black;
 }
 .input-group{
     text-align: center;
@@ -16,22 +21,25 @@ body{
     display: inline-block;
     width: 300px;
 }
-button{
-    background-color: rgb(223, 165, 175);
+.btn{
+    background-color: green;
     padding: 5px;
     margin: 5px;
+    border: none;
 }
-button:hover{
+.footy:hover{
     background-color: pink;
+    border: none;
 }
 #footy-input{
     width: 300px;
 }
 #add-footy{
-    background-color: rgb(223, 165, 175);
+    /* background-color: rgb(223, 165, 175); */
 }
 #add-footy:hover{
     background-color: pink;
+    border: none;
 }
 #gifHolder{
     /* background-color: green; */

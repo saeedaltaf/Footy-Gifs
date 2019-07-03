@@ -18,7 +18,7 @@ $(document).ready(function () {
         //Loop through the array to generate buttons for each string:
         for (var i = 0; i < footyArray.length; i++) {
             var createButtons = $("<button>");
-            createButtons.addClass("footy");
+            createButtons.addClass("btn btn-warning footy");
             createButtons.attr("data-name", footyArray[i]);
             createButtons.text(footyArray[i]);
 
