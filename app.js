@@ -8,8 +8,8 @@
 //Make AJAX call that takes each topic in array and remakes the buttons on the page
 $(document).ready(function () {
 
-    var footyArray = ["Arsenal", "Chelsea", "Barcelona", "Manchester United", "AC Milan",
-        "Mario Balotelli", "Luis Suarez", "Joey Barton", "Vinnie Jones"];
+    var footyArray = ["Arsenal", "ChelseaFC", "Barcelona", "Manchester United", "AC Milan",
+        "Mario Balotelli", "Luis Suarez", "Ajax", "Vinnie Jones"];
 
     function createButtons() {
         //To delete buttons before adding new buttons (avoids repeat buttons):
@@ -46,30 +46,44 @@ $(document).ready(function () {
         var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + response + "&api_key=eM3vuQQaXtYtAStZNGXUC7wA1T5Z46FB&limit=10";
 
         // console.log(queryURL);
-        console.log(queryURL);
-        console.log(response);
+        // console.log(queryURL);
+        // console.log(response);
 
         $.ajax({
             url: queryURL,
             method: "GET"
-        }).then(function (response) {
-            console.log(response.data[0].type);
+        })
+        .then(function(response){
+            console.log(queryURL);
+            console.log(response.data);
 
-            //storing the array as a variable name:
-            var giphy = response.data;
-            $("#gifHolder").empty();
+            var results = response.data;
+            for (var i = 0; i < results.length; i++) {
+                var footyDiv = $("<div>");
+                var p = $("<p>").text("Rating: " + results[i].rating);
+                var footyImages = $("<img>");
+                footyImages.attr("src", results[i].images.fixed_height_still.url);
+                footyImages.attr("class", "gif image-responsive");
+                
 
-            //Loop through the array in queryURL:
-            for (var i = 0; i < giphy.length, i++;) {
-                var footyGifs = $("#gifRowOne");
+                footyDiv.append(footyImages);
+                footyDiv.append(p);
 
-
-
-                footyGifs.append(response.data[0].type);
-                footyGifs.append(footyGifImage);
-
+                $("#gifHolder").prepend(footyDiv);
             }
-
         })
     })
+    $(document).on("click", ".gif", function(){
+        var still = $(this).attr("data-still");
+        var animate = $(this).attr("data-animate");
+
+        if ($(this).attr("data-state") === "still"){
+            $(this).attr("src", animate);
+            $(this).attr("data-state", "animate")
+        } else {
+            $(this).attr("src", still);
+            $(this).attr("data-state", "still");
+        }
+    })
+
 });
