@@ -63,6 +63,8 @@ $(document).ready(function () {
                 var p = $("<p>").text("Rating: " + results[i].rating);
                 var footyImages = $("<img>");
                 footyImages.attr("src", results[i].images.fixed_height_still.url);
+                footyImages.attr("data-animate", results[i].images.fixed_height.url);
+                footyImages.attr("data-still", results[i].images.fixed_height_still.url);
                 footyImages.attr("class", "gif image-responsive");
                 
 
